@@ -3,8 +3,8 @@
 template <typename T>
 Queue<T>::Queue()
 {
-    front = NULL;
-    tail = NULL;
+    front = nullptr;
+    tail = nullptr;
 }
 
 template <typename T>
@@ -12,15 +12,17 @@ void Queue<T>::enqueue(T data)
 {
     Node<T> *newNode = new Node<T>;
     newNode->data = data;
+    newNode->next = nullptr;
     if (isNull())
     {
         front = newNode;
         tail = newNode;
-        newNode->next = NULL;
     }
-
-    tail->next = newNode;
-    tail = newNode;
+    else
+    {
+        tail->next = newNode;
+        tail = newNode;
+    }
 }
 
 template <typename T>
@@ -28,11 +30,18 @@ T Queue<T>::dequeue()
 {
     if (isNull())
     {
-        std::cout << "Queue is empty!" << std::endl;
+        throw std::underflow_error("Queue is empty!");
     }
+
     Node<T> *toDelete = front;
     T deleteVal = toDelete->data;
     front = front->next;
+
+    if (front == nullptr)
+    {
+        tail = nullptr;
+    }
+
     delete toDelete;
     return deleteVal;
 }
@@ -40,7 +49,7 @@ T Queue<T>::dequeue()
 template <typename T>
 bool Queue<T>::isNull()
 {
-    return front == NULL;
+    return front == nullptr;
 }
 
 template <typename T>
