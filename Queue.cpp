@@ -30,7 +30,7 @@ T Queue<T>::dequeue()
     {
         std::cout << "Queue is empty!" << std::endl;
     }
-    Node *toDelete = front;
+    Node<T> *toDelete = front;
     T deleteVal = toDelete->data;
     front = front->next;
     delete toDelete;
