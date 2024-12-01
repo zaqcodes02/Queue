@@ -12,7 +12,7 @@ void Queue<T>::enqueue(T data)
 {
     Node<T> *newNode = new Node<T>;
     newNode->data = data;
-    if (isEmpty())
+    if (isNull())
     {
         front = newNode;
         tail = newNode;
@@ -26,7 +26,7 @@ void Queue<T>::enqueue(T data)
 template <typename T>
 T Queue<T>::dequeue()
 {
-    if (isEmpty())
+    if (isNull())
     {
         std::cout << "Queue is empty!" << std::endl;
     }
@@ -49,7 +49,7 @@ bool Queue<T>::isNull()
 template <typename T>
 Queue<T>::~Queue()
 {
-    while (!isEmpty())
+    while (!isNull())
     {
         dequeue();
     }
