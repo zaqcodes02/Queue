@@ -40,10 +40,7 @@ T Queue<T>::dequeue()
 template <typename T>
 bool Queue<T>::isNull()
 {
-    if (front == NULL)
-        return true;
-    else
-        return false;
+    return front == NULL;
 }
 
 template <typename T>
